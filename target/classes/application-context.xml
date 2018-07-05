@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		
+	<context:annotation-config/>
+	<context:component-scan base-package="com.musings.mykafka"/>
+	
+	<util:properties id="producerProperties">
+		<prop key="bootstrap.servers">localhost:9091,localhost:9092</prop>
+		<prop key="acks">1</prop>
+		<prop key="key.serializer">org.apache.kafka.common.serialization.StringSerializer</prop>
+		<prop key="value.serializer">org.apache.kafka.common.serialization.StringSerializer</prop>
+		<prop key="retries">3</prop>
+		<prop key="linger.ms">1</prop>
+	</util:properties>
+	
+	<util:properties id="consumerProperties">
+		<prop key="bootstrap.servers">localhost:9091,localhost:9092</prop>
+		<prop key="key.deserializer">org.apache.kafka.common.serialization.StringDeserializer</prop>
+		<prop key="value.deserializer">org.apache.kafka.common.serialization.StringDeserializer</prop>
+		<prop key="group.id">test</prop>
+		<!--prop key="enable.auto.commit">true</prop-->
+		<prop key="auto.commit.interval.ms">100</prop>
+		<prop key="auto.offset.reset">earliest</prop>
+	</util:properties>
+
+
+</beans>

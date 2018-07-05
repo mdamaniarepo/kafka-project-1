@@ -1,0 +1,12 @@
+{
+	"type": "record",
+	"namespace": "com.musings.mykafka.avro.customeraddress",
+	"name": "customerAddress",
+	"doc": "This is a customer address schema",
+	"fields": [
+		{"name": "address", "type": "string", "doc": "Address of customer"},
+		{"name": "city", "type": "string", "doc": "City of customer"},
+		{"name": "postcode", "type": "string", "doc": "Postcode of customer"},
+		{"name": "type", "type": "enum", "symbols": ["PO BOX", "RESIDENTIAL", "ENTERPRISE"], "doc": "City of customer"}
+	]
+}
